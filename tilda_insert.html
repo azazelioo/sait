@@ -1,12 +1,12 @@
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Raleway:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap');
 
 .mg-root {
-  --gold: #C8A96E;
-  --dark: #1A1118;
-  --cream: #F5EDE0;
-  --burgundy: #5C1F3A;
-  --text: #3D2B3D;
+  --gold: #C87941;
+  --dark: #1A1A1A;
+  --cream: #F2F2F2;
+  --burgundy: #6B7A2A;
+  --text: #2A2A2A;
 }
 
 .mg-root * { box-sizing: border-box; }
@@ -14,7 +14,7 @@
 /* ===== БЛОК 1: HERO ===== */
 .mg-hero {
   min-height: 100vh;
-  background: linear-gradient(135deg, #2D1B2D 0%, #5C1F3A 40%, #8B3A5A 70%, #C8A96E 100%);
+  background: linear-gradient(135deg, #111208 0%, #2A3015 40%, #4A5C1A 70%, #1A1A1A 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,8 +26,8 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 50% 0%, rgba(200,169,110,0.3) 0%, transparent 60%),
-              radial-gradient(ellipse at 100% 100%, rgba(92,31,58,0.5) 0%, transparent 50%);
+  background: radial-gradient(ellipse at 50% 0%, rgba(200,121,65,0.3) 0%, transparent 60%),
+              radial-gradient(ellipse at 100% 100%, rgba(107,122,42,0.5) 0%, transparent 50%);
 }
 .mg-sun-rays {
   position: absolute;
@@ -36,24 +36,24 @@
   width: 200%; height: 200%;
   background: conic-gradient(
     from 0deg,
-    transparent 0deg, rgba(200,169,110,0.05) 10deg,
-    transparent 20deg, rgba(200,169,110,0.05) 30deg,
-    transparent 40deg, rgba(200,169,110,0.05) 50deg,
-    transparent 60deg, rgba(200,169,110,0.05) 70deg,
-    transparent 80deg, rgba(200,169,110,0.05) 90deg,
-    transparent 100deg, rgba(200,169,110,0.05) 110deg,
-    transparent 120deg, rgba(200,169,110,0.05) 130deg,
-    transparent 140deg, rgba(200,169,110,0.05) 150deg,
-    transparent 160deg, rgba(200,169,110,0.05) 170deg,
-    transparent 180deg, rgba(200,169,110,0.05) 190deg,
-    transparent 200deg, rgba(200,169,110,0.05) 210deg,
-    transparent 220deg, rgba(200,169,110,0.05) 230deg,
-    transparent 240deg, rgba(200,169,110,0.05) 250deg,
-    transparent 260deg, rgba(200,169,110,0.05) 270deg,
-    transparent 280deg, rgba(200,169,110,0.05) 290deg,
-    transparent 300deg, rgba(200,169,110,0.05) 310deg,
-    transparent 320deg, rgba(200,169,110,0.05) 330deg,
-    transparent 340deg, rgba(200,169,110,0.05) 350deg,
+    transparent 0deg, rgba(200,121,65,0.05) 10deg,
+    transparent 20deg, rgba(200,121,65,0.05) 30deg,
+    transparent 40deg, rgba(200,121,65,0.05) 50deg,
+    transparent 60deg, rgba(200,121,65,0.05) 70deg,
+    transparent 80deg, rgba(200,121,65,0.05) 90deg,
+    transparent 100deg, rgba(200,121,65,0.05) 110deg,
+    transparent 120deg, rgba(200,121,65,0.05) 130deg,
+    transparent 140deg, rgba(200,121,65,0.05) 150deg,
+    transparent 160deg, rgba(200,121,65,0.05) 170deg,
+    transparent 180deg, rgba(200,121,65,0.05) 190deg,
+    transparent 200deg, rgba(200,121,65,0.05) 210deg,
+    transparent 220deg, rgba(200,121,65,0.05) 230deg,
+    transparent 240deg, rgba(200,121,65,0.05) 250deg,
+    transparent 260deg, rgba(200,121,65,0.05) 270deg,
+    transparent 280deg, rgba(200,121,65,0.05) 290deg,
+    transparent 300deg, rgba(200,121,65,0.05) 310deg,
+    transparent 320deg, rgba(200,121,65,0.05) 330deg,
+    transparent 340deg, rgba(200,121,65,0.05) 350deg,
     transparent 360deg
   );
   animation: mgRotateSun 60s linear infinite;
@@ -68,53 +68,53 @@
   padding: 60px 40px; max-width: 900px;
 }
 .mg-hero-label {
-  font-family: 'Raleway', sans-serif; font-weight: 300;
+  font-family: 'Montserrat', sans-serif; font-weight: 300;
   font-size: 14px; letter-spacing: 4px; text-transform: uppercase;
-  color: #C8A96E; margin-bottom: 30px;
+  color: #C87941; margin-bottom: 30px;
 }
 .mg-hero-title {
-  font-family: 'Cormorant Garamond', serif; font-weight: 300;
+  font-family: 'Playfair Display', serif; font-weight: 300;
   font-size: clamp(42px, 7vw, 80px); line-height: 1.1;
   color: #fff; margin-bottom: 20px;
 }
-.mg-hero-title em { font-style: italic; color: #C8A96E; }
+.mg-hero-title em { font-style: italic; color: #C87941; }
 .mg-hero-subtitle {
-  font-family: 'Cormorant Garamond', serif; font-weight: 300;
+  font-family: 'Playfair Display', serif; font-weight: 300;
   font-size: clamp(18px, 2.5vw, 24px); color: rgba(255,255,255,0.75);
   line-height: 1.5; margin-bottom: 50px;
   max-width: 600px; margin-left: auto; margin-right: auto;
 }
 .mg-hero-date {
   display: inline-block;
-  background: rgba(200,169,110,0.2); border: 1px solid #C8A96E;
-  color: #C8A96E; font-size: 14px; letter-spacing: 3px;
+  background: rgba(200,121,65,0.2); border: 1px solid #C87941;
+  color: #C87941; font-size: 14px; letter-spacing: 3px;
   text-transform: uppercase; padding: 12px 30px;
   border-radius: 2px; margin-bottom: 40px;
 }
 .mg-btn {
-  display: inline-block; background: #C8A96E; color: #1A1118;
-  font-family: 'Raleway', sans-serif; font-weight: 600;
+  display: inline-block; background: #C87941; color: #1A1A1A;
+  font-family: 'Montserrat', sans-serif; font-weight: 600;
   font-size: 14px; letter-spacing: 2px; text-transform: uppercase;
   padding: 18px 50px; border-radius: 2px; text-decoration: none;
   transition: all 0.3s ease; cursor: pointer;
 }
-.mg-btn:hover { background: #B8956A; transform: translateY(-2px); }
+.mg-btn:hover { background: #A8612A; transform: translateY(-2px); }
 
 /* ===== ОБЩИЕ СТИЛИ СЕКЦИЙ ===== */
 .mg-section { padding: 100px 40px; }
 .mg-container { max-width: 1100px; margin: 0 auto; }
 .mg-label {
   font-size: 12px; letter-spacing: 4px; text-transform: uppercase;
-  color: #C8A96E; margin-bottom: 16px; font-weight: 500;
-  font-family: 'Raleway', sans-serif;
+  color: #C87941; margin-bottom: 16px; font-weight: 500;
+  font-family: 'Montserrat', sans-serif;
 }
 .mg-title {
-  font-family: 'Cormorant Garamond', serif; font-weight: 400;
+  font-family: 'Playfair Display', serif; font-weight: 400;
   font-size: clamp(32px, 5vw, 52px); line-height: 1.15;
-  color: #1A1118; margin-bottom: 30px;
+  color: #1A1A1A; margin-bottom: 30px;
 }
-.mg-title em { font-style: italic; color: #5C1F3A; }
-.mg-divider { width: 60px; height: 1px; background: #C8A96E; margin-bottom: 40px; }
+.mg-title em { font-style: italic; color: #6B7A2A; }
+.mg-divider { width: 60px; height: 1px; background: #C87941; margin-bottom: 40px; }
 
 /* ===== БЛОК 2: О ПРОГРАММЕ ===== */
 .mg-about { background: #fff; }
@@ -123,81 +123,81 @@
   gap: 80px; align-items: start;
 }
 .mg-about-text p {
-  font-size: 17px; line-height: 1.8; color: #5A4A5A;
-  margin-bottom: 20px; font-family: 'Raleway', sans-serif;
+  font-size: 17px; line-height: 1.8; color: #3A3A3A;
+  margin-bottom: 20px; font-family: 'Montserrat', sans-serif;
 }
-.mg-about-text strong { color: #5C1F3A; font-weight: 600; }
+.mg-about-text strong { color: #6B7A2A; font-weight: 600; }
 .mg-stages { display: flex; margin: 30px 0; }
 .mg-stage {
   flex: 1; text-align: center; padding: 20px 10px; position: relative;
 }
 .mg-stage::after {
   content: '→'; position: absolute; right: -8px; top: 50%;
-  transform: translateY(-50%); color: #C8A96E; font-size: 18px;
+  transform: translateY(-50%); color: #C87941; font-size: 18px;
 }
 .mg-stage:last-child::after { display: none; }
 .mg-stage-num {
-  font-family: 'Cormorant Garamond', serif; font-size: 36px;
-  color: #C8A96E; opacity: 0.5; line-height: 1; margin-bottom: 8px;
+  font-family: 'Playfair Display', serif; font-size: 36px;
+  color: #C87941; opacity: 0.5; line-height: 1; margin-bottom: 8px;
 }
 .mg-stage-name {
   font-size: 13px; letter-spacing: 1px; text-transform: uppercase;
-  color: #5C1F3A; font-weight: 600; font-family: 'Raleway', sans-serif;
+  color: #6B7A2A; font-weight: 600; font-family: 'Montserrat', sans-serif;
 }
 .mg-symptoms { list-style: none; }
 .mg-symptoms li {
-  padding: 18px 0 18px 30px; border-bottom: 1px solid rgba(200,169,110,0.2);
+  padding: 18px 0 18px 30px; border-bottom: 1px solid rgba(200,121,65,0.2);
   position: relative; font-size: 15px; line-height: 1.6;
-  color: #5A4A5A; font-family: 'Raleway', sans-serif;
+  color: #3A3A3A; font-family: 'Montserrat', sans-serif;
 }
 .mg-symptoms li::before {
-  content: '◆'; position: absolute; left: 0; color: #C8A96E;
+  content: '◆'; position: absolute; left: 0; color: #C87941;
   font-size: 8px; top: 22px;
 }
 .mg-symptoms li strong {
-  display: block; color: #1A1118; font-weight: 600;
+  display: block; color: #1A1A1A; font-weight: 600;
   margin-bottom: 4px; font-size: 14px;
 }
 
 /* ===== БЛОК 3: ПРОГРАММА ===== */
-.mg-program { background: linear-gradient(180deg, #F5EDE0 0%, #EDE0D4 100%); }
+.mg-program { background: linear-gradient(180deg, #F2F2F2 0%, #E5E5E5 100%); }
 .mg-weeks { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
 .mg-week-header {
-  background: #5C1F3A; color: #fff; padding: 20px 25px;
+  background: #6B7A2A; color: #fff; padding: 20px 25px;
   border-radius: 2px 2px 0 0;
 }
 .mg-week-header h3 {
-  font-family: 'Cormorant Garamond', serif; font-weight: 400;
+  font-family: 'Playfair Display', serif; font-weight: 400;
   font-size: 22px; margin-bottom: 4px;
 }
 .mg-week-speaker {
   font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
-  color: rgba(255,255,255,0.65); font-family: 'Raleway', sans-serif;
+  color: rgba(255,255,255,0.65); font-family: 'Montserrat', sans-serif;
 }
 .mg-sched-item {
   display: flex; gap: 20px; padding: 25px;
-  background: #fff; border-bottom: 1px solid rgba(200,169,110,0.15);
+  background: #fff; border-bottom: 1px solid rgba(200,121,65,0.15);
 }
 .mg-sched-item:last-child { border-radius: 0 0 2px 2px; }
 .mg-sched-date {
   min-width: 85px; font-size: 12px; letter-spacing: 1px;
-  text-transform: uppercase; color: #C8A96E; font-weight: 600;
-  padding-top: 3px; font-family: 'Raleway', sans-serif;
+  text-transform: uppercase; color: #C87941; font-weight: 600;
+  padding-top: 3px; font-family: 'Montserrat', sans-serif;
 }
 .mg-sched-content h4 {
-  font-family: 'Cormorant Garamond', serif; font-size: 20px;
-  color: #1A1118; margin-bottom: 6px;
+  font-family: 'Playfair Display', serif; font-size: 20px;
+  color: #1A1A1A; margin-bottom: 6px;
 }
 .mg-sched-content p {
-  font-size: 14px; color: #7A6A7A; line-height: 1.5;
-  font-family: 'Raleway', sans-serif;
+  font-size: 14px; color: #666666; line-height: 1.5;
+  font-family: 'Montserrat', sans-serif;
 }
-.mg-sched-special { background: linear-gradient(135deg, #2D1B2D, #5C1F3A); }
+.mg-sched-special { background: linear-gradient(135deg, #2A3015, #6B7A2A); }
 .mg-sched-special .mg-sched-content h4 { color: #fff; }
 .mg-sched-special .mg-sched-content p { color: rgba(255,255,255,0.65); }
 
 /* ===== БЛОК 4: СПИКЕРЫ ===== */
-.mg-speakers { background: #1A1118; }
+.mg-speakers { background: #1A1A1A; }
 .mg-speakers .mg-title { color: #fff; }
 .mg-speakers-grid {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px;
@@ -207,79 +207,79 @@
   width: 200px; height: 200px; border-radius: 50%;
   object-fit: cover; object-position: top;
   margin: 0 auto 25px; display: block;
-  border: 2px solid #C8A96E;
+  border: 2px solid #C87941;
 }
 .mg-speaker-name {
-  font-family: 'Cormorant Garamond', serif; font-size: 24px;
+  font-family: 'Playfair Display', serif; font-size: 24px;
   color: #fff; margin-bottom: 8px;
 }
 .mg-speaker-role {
-  font-size: 13px; color: #C8A96E; letter-spacing: 1px;
+  font-size: 13px; color: #C87941; letter-spacing: 1px;
   text-transform: uppercase; margin-bottom: 15px;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 .mg-speaker-bio {
   font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.55);
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 /* ===== БЛОК 5: ТАРИФЫ ===== */
-.mg-tariffs { background: #F5EDE0; }
+.mg-tariffs { background: #F2F2F2; }
 .mg-tariffs-grid {
   display: grid; grid-template-columns: repeat(3, 1fr);
   gap: 30px; margin-top: 60px;
 }
 .mg-tariff {
   background: #fff; padding: 50px 35px; border-radius: 2px;
-  text-align: center; border: 1px solid rgba(200,169,110,0.2);
+  text-align: center; border: 1px solid rgba(200,121,65,0.2);
   position: relative; transition: transform 0.3s ease;
 }
 .mg-tariff:hover { transform: translateY(-8px); }
-.mg-tariff.mg-featured { background: #5C1F3A; border-color: #5C1F3A; }
+.mg-tariff.mg-featured { background: #6B7A2A; border-color: #6B7A2A; }
 .mg-tariff.mg-featured .mg-tariff-name { color: #fff; }
-.mg-tariff.mg-featured .mg-tariff-price { color: #C8A96E; }
+.mg-tariff.mg-featured .mg-tariff-price { color: #C87941; }
 .mg-tariff.mg-featured .mg-tariff-early { color: rgba(255,255,255,0.6); }
 .mg-tariff.mg-featured .mg-tariff-features li { color: rgba(255,255,255,0.75); border-color: rgba(255,255,255,0.15); }
-.mg-tariff.mg-featured .mg-tariff-btn { background: #C8A96E; color: #1A1118; }
+.mg-tariff.mg-featured .mg-tariff-btn { background: #C87941; color: #1A1A1A; }
 .mg-tariff-badge {
   position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
-  background: #C8A96E; color: #1A1118; font-size: 11px; letter-spacing: 2px;
+  background: #C87941; color: #1A1A1A; font-size: 11px; letter-spacing: 2px;
   text-transform: uppercase; padding: 5px 16px; border-radius: 20px;
-  font-weight: 600; white-space: nowrap; font-family: 'Raleway', sans-serif;
+  font-weight: 600; white-space: nowrap; font-family: 'Montserrat', sans-serif;
 }
 .mg-tariff-name {
-  font-family: 'Cormorant Garamond', serif; font-size: 28px;
-  color: #1A1118; margin-bottom: 25px;
+  font-family: 'Playfair Display', serif; font-size: 28px;
+  color: #1A1A1A; margin-bottom: 25px;
 }
 .mg-tariff-price {
-  font-family: 'Cormorant Garamond', serif; font-size: 42px;
-  color: #5C1F3A; line-height: 1; margin-bottom: 5px;
+  font-family: 'Playfair Display', serif; font-size: 42px;
+  color: #6B7A2A; line-height: 1; margin-bottom: 5px;
 }
 .mg-tariff-early {
-  font-size: 13px; color: #9A8A9A; margin-bottom: 30px;
-  font-family: 'Raleway', sans-serif;
+  font-size: 13px; color: #888888; margin-bottom: 30px;
+  font-family: 'Montserrat', sans-serif;
 }
 .mg-tariff-features { list-style: none; text-align: left; margin-bottom: 35px; }
 .mg-tariff-features li {
-  font-size: 14px; color: #6A5A6A; padding: 10px 0 10px 22px;
-  border-bottom: 1px solid rgba(200,169,110,0.15); position: relative;
-  line-height: 1.5; font-family: 'Raleway', sans-serif;
+  font-size: 14px; color: #555555; padding: 10px 0 10px 22px;
+  border-bottom: 1px solid rgba(200,121,65,0.15); position: relative;
+  line-height: 1.5; font-family: 'Montserrat', sans-serif;
 }
 .mg-tariff-features li::before {
-  content: '✓'; position: absolute; left: 0; color: #C8A96E; font-weight: 600;
+  content: '✓'; position: absolute; left: 0; color: #C87941; font-weight: 600;
 }
 .mg-tariff-btn {
-  display: block; background: #1A1118; color: #fff;
-  font-family: 'Raleway', sans-serif; font-size: 12px;
+  display: block; background: #1A1A1A; color: #fff;
+  font-family: 'Montserrat', sans-serif; font-size: 12px;
   letter-spacing: 2px; text-transform: uppercase;
   padding: 16px 20px; border-radius: 2px; text-decoration: none;
   font-weight: 600; text-align: center; width: 100%;
 }
 .mg-tariff-note {
   text-align: center; margin-top: 40px; font-size: 14px;
-  color: #9A8A9A; line-height: 1.6; font-family: 'Raleway', sans-serif;
+  color: #888888; line-height: 1.6; font-family: 'Montserrat', sans-serif;
 }
-.mg-tariff-note strong { color: #5C1F3A; }
+.mg-tariff-note strong { color: #6B7A2A; }
 
 /* ===== АДАПТИВ ===== */
 @media (max-width: 900px) {
@@ -390,7 +390,7 @@
         </div>
       </div>
       <div>
-        <div class="mg-week-header" style="background:#2D1B2D;">
+        <div class="mg-week-header" style="background:#2A3015;">
           <h3>Вторая неделя</h3>
           <div class="mg-week-speaker">Спикер: Елена Соломина</div>
         </div>
@@ -460,7 +460,7 @@
       <div class="mg-tariff">
         <div class="mg-tariff-name">Внешний круг</div>
         <div class="mg-tariff-price">14 700 ₽</div>
-        <div class="mg-tariff-early">до 16 марта — <strong style="color:#C8A96E">13 300 ₽</strong></div>
+        <div class="mg-tariff-early">до 16 марта — <strong style="color:#C87941">13 300 ₽</strong></div>
         <ul class="mg-tariff-features">
           <li>Доступ к вебинарам как слушатель</li>
           <li>Записи всех эфиров</li>
@@ -471,7 +471,7 @@
         <div class="mg-tariff-badge">Популярный выбор</div>
         <div class="mg-tariff-name">Внутренний круг</div>
         <div class="mg-tariff-price">21 100 ₽</div>
-        <div class="mg-tariff-early">до 16 марта — <strong style="color:#C8A96E">18 800 ₽</strong></div>
+        <div class="mg-tariff-early">до 16 марта — <strong style="color:#C87941">18 800 ₽</strong></div>
         <ul class="mg-tariff-features">
           <li>Интерактивная работа с обратной связью</li>
           <li>Онлайн-встречи с участниками</li>
@@ -483,7 +483,7 @@
       <div class="mg-tariff">
         <div class="mg-tariff-name">Частный круг</div>
         <div class="mg-tariff-price">33 300 ₽</div>
-        <div class="mg-tariff-early">до 16 марта — <strong style="color:#C8A96E">30 300 ₽</strong></div>
+        <div class="mg-tariff-early">до 16 марта — <strong style="color:#C87941">30 300 ₽</strong></div>
         <ul class="mg-tariff-features">
           <li>Максимальная плотность работы</li>
           <li>Индивидуальный разбор</li>
