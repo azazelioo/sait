@@ -8,6 +8,13 @@
   --dark:   #1A1A1A;
   --silver: #C0C0C0;
   --light:  #F2F2F2;
+  /* Выход за пределы Tilda-контейнера — растяжка на всю ширину экрана */
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: none !important;
+  overflow-x: hidden;
 }
 
 .mg-root * { box-sizing: border-box; }
