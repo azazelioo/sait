@@ -1,0 +1,503 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Raleway:wght@300;400;500;600&display=swap');
+
+.mg-root {
+  --gold: #C8A96E;
+  --dark: #1A1118;
+  --cream: #F5EDE0;
+  --burgundy: #5C1F3A;
+  --text: #3D2B3D;
+}
+
+.mg-root * { box-sizing: border-box; }
+
+/* ===== БЛОК 1: HERO ===== */
+.mg-hero {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #2D1B2D 0%, #5C1F3A 40%, #8B3A5A 70%, #C8A96E 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.mg-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(200,169,110,0.3) 0%, transparent 60%),
+              radial-gradient(ellipse at 100% 100%, rgba(92,31,58,0.5) 0%, transparent 50%);
+}
+.mg-sun-rays {
+  position: absolute;
+  top: -20%; left: 50%;
+  transform: translateX(-50%);
+  width: 200%; height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg, rgba(200,169,110,0.05) 10deg,
+    transparent 20deg, rgba(200,169,110,0.05) 30deg,
+    transparent 40deg, rgba(200,169,110,0.05) 50deg,
+    transparent 60deg, rgba(200,169,110,0.05) 70deg,
+    transparent 80deg, rgba(200,169,110,0.05) 90deg,
+    transparent 100deg, rgba(200,169,110,0.05) 110deg,
+    transparent 120deg, rgba(200,169,110,0.05) 130deg,
+    transparent 140deg, rgba(200,169,110,0.05) 150deg,
+    transparent 160deg, rgba(200,169,110,0.05) 170deg,
+    transparent 180deg, rgba(200,169,110,0.05) 190deg,
+    transparent 200deg, rgba(200,169,110,0.05) 210deg,
+    transparent 220deg, rgba(200,169,110,0.05) 230deg,
+    transparent 240deg, rgba(200,169,110,0.05) 250deg,
+    transparent 260deg, rgba(200,169,110,0.05) 270deg,
+    transparent 280deg, rgba(200,169,110,0.05) 290deg,
+    transparent 300deg, rgba(200,169,110,0.05) 310deg,
+    transparent 320deg, rgba(200,169,110,0.05) 330deg,
+    transparent 340deg, rgba(200,169,110,0.05) 350deg,
+    transparent 360deg
+  );
+  animation: mgRotateSun 60s linear infinite;
+  pointer-events: none;
+}
+@keyframes mgRotateSun {
+  from { transform: translateX(-50%) rotate(0deg); }
+  to { transform: translateX(-50%) rotate(360deg); }
+}
+.mg-hero-content {
+  position: relative; z-index: 2;
+  padding: 60px 40px; max-width: 900px;
+}
+.mg-hero-label {
+  font-family: 'Raleway', sans-serif; font-weight: 300;
+  font-size: 14px; letter-spacing: 4px; text-transform: uppercase;
+  color: #C8A96E; margin-bottom: 30px;
+}
+.mg-hero-title {
+  font-family: 'Cormorant Garamond', serif; font-weight: 300;
+  font-size: clamp(42px, 7vw, 80px); line-height: 1.1;
+  color: #fff; margin-bottom: 20px;
+}
+.mg-hero-title em { font-style: italic; color: #C8A96E; }
+.mg-hero-subtitle {
+  font-family: 'Cormorant Garamond', serif; font-weight: 300;
+  font-size: clamp(18px, 2.5vw, 24px); color: rgba(255,255,255,0.75);
+  line-height: 1.5; margin-bottom: 50px;
+  max-width: 600px; margin-left: auto; margin-right: auto;
+}
+.mg-hero-date {
+  display: inline-block;
+  background: rgba(200,169,110,0.2); border: 1px solid #C8A96E;
+  color: #C8A96E; font-size: 14px; letter-spacing: 3px;
+  text-transform: uppercase; padding: 12px 30px;
+  border-radius: 2px; margin-bottom: 40px;
+}
+.mg-btn {
+  display: inline-block; background: #C8A96E; color: #1A1118;
+  font-family: 'Raleway', sans-serif; font-weight: 600;
+  font-size: 14px; letter-spacing: 2px; text-transform: uppercase;
+  padding: 18px 50px; border-radius: 2px; text-decoration: none;
+  transition: all 0.3s ease; cursor: pointer;
+}
+.mg-btn:hover { background: #B8956A; transform: translateY(-2px); }
+
+/* ===== ОБЩИЕ СТИЛИ СЕКЦИЙ ===== */
+.mg-section { padding: 100px 40px; }
+.mg-container { max-width: 1100px; margin: 0 auto; }
+.mg-label {
+  font-size: 12px; letter-spacing: 4px; text-transform: uppercase;
+  color: #C8A96E; margin-bottom: 16px; font-weight: 500;
+  font-family: 'Raleway', sans-serif;
+}
+.mg-title {
+  font-family: 'Cormorant Garamond', serif; font-weight: 400;
+  font-size: clamp(32px, 5vw, 52px); line-height: 1.15;
+  color: #1A1118; margin-bottom: 30px;
+}
+.mg-title em { font-style: italic; color: #5C1F3A; }
+.mg-divider { width: 60px; height: 1px; background: #C8A96E; margin-bottom: 40px; }
+
+/* ===== БЛОК 2: О ПРОГРАММЕ ===== */
+.mg-about { background: #fff; }
+.mg-about-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 80px; align-items: start;
+}
+.mg-about-text p {
+  font-size: 17px; line-height: 1.8; color: #5A4A5A;
+  margin-bottom: 20px; font-family: 'Raleway', sans-serif;
+}
+.mg-about-text strong { color: #5C1F3A; font-weight: 600; }
+.mg-stages { display: flex; margin: 30px 0; }
+.mg-stage {
+  flex: 1; text-align: center; padding: 20px 10px; position: relative;
+}
+.mg-stage::after {
+  content: '→'; position: absolute; right: -8px; top: 50%;
+  transform: translateY(-50%); color: #C8A96E; font-size: 18px;
+}
+.mg-stage:last-child::after { display: none; }
+.mg-stage-num {
+  font-family: 'Cormorant Garamond', serif; font-size: 36px;
+  color: #C8A96E; opacity: 0.5; line-height: 1; margin-bottom: 8px;
+}
+.mg-stage-name {
+  font-size: 13px; letter-spacing: 1px; text-transform: uppercase;
+  color: #5C1F3A; font-weight: 600; font-family: 'Raleway', sans-serif;
+}
+.mg-symptoms { list-style: none; }
+.mg-symptoms li {
+  padding: 18px 0 18px 30px; border-bottom: 1px solid rgba(200,169,110,0.2);
+  position: relative; font-size: 15px; line-height: 1.6;
+  color: #5A4A5A; font-family: 'Raleway', sans-serif;
+}
+.mg-symptoms li::before {
+  content: '◆'; position: absolute; left: 0; color: #C8A96E;
+  font-size: 8px; top: 22px;
+}
+.mg-symptoms li strong {
+  display: block; color: #1A1118; font-weight: 600;
+  margin-bottom: 4px; font-size: 14px;
+}
+
+/* ===== БЛОК 3: ПРОГРАММА ===== */
+.mg-program { background: linear-gradient(180deg, #F5EDE0 0%, #EDE0D4 100%); }
+.mg-weeks { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+.mg-week-header {
+  background: #5C1F3A; color: #fff; padding: 20px 25px;
+  border-radius: 2px 2px 0 0;
+}
+.mg-week-header h3 {
+  font-family: 'Cormorant Garamond', serif; font-weight: 400;
+  font-size: 22px; margin-bottom: 4px;
+}
+.mg-week-speaker {
+  font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(255,255,255,0.65); font-family: 'Raleway', sans-serif;
+}
+.mg-sched-item {
+  display: flex; gap: 20px; padding: 25px;
+  background: #fff; border-bottom: 1px solid rgba(200,169,110,0.15);
+}
+.mg-sched-item:last-child { border-radius: 0 0 2px 2px; }
+.mg-sched-date {
+  min-width: 85px; font-size: 12px; letter-spacing: 1px;
+  text-transform: uppercase; color: #C8A96E; font-weight: 600;
+  padding-top: 3px; font-family: 'Raleway', sans-serif;
+}
+.mg-sched-content h4 {
+  font-family: 'Cormorant Garamond', serif; font-size: 20px;
+  color: #1A1118; margin-bottom: 6px;
+}
+.mg-sched-content p {
+  font-size: 14px; color: #7A6A7A; line-height: 1.5;
+  font-family: 'Raleway', sans-serif;
+}
+.mg-sched-special { background: linear-gradient(135deg, #2D1B2D, #5C1F3A); }
+.mg-sched-special .mg-sched-content h4 { color: #fff; }
+.mg-sched-special .mg-sched-content p { color: rgba(255,255,255,0.65); }
+
+/* ===== БЛОК 4: СПИКЕРЫ ===== */
+.mg-speakers { background: #1A1118; }
+.mg-speakers .mg-title { color: #fff; }
+.mg-speakers-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px;
+}
+.mg-speaker { text-align: center; }
+.mg-speaker-photo {
+  width: 200px; height: 200px; border-radius: 50%;
+  object-fit: cover; object-position: top;
+  margin: 0 auto 25px; display: block;
+  border: 2px solid #C8A96E;
+}
+.mg-speaker-name {
+  font-family: 'Cormorant Garamond', serif; font-size: 24px;
+  color: #fff; margin-bottom: 8px;
+}
+.mg-speaker-role {
+  font-size: 13px; color: #C8A96E; letter-spacing: 1px;
+  text-transform: uppercase; margin-bottom: 15px;
+  font-family: 'Raleway', sans-serif;
+}
+.mg-speaker-bio {
+  font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.55);
+  font-family: 'Raleway', sans-serif;
+}
+
+/* ===== БЛОК 5: ТАРИФЫ ===== */
+.mg-tariffs { background: #F5EDE0; }
+.mg-tariffs-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 30px; margin-top: 60px;
+}
+.mg-tariff {
+  background: #fff; padding: 50px 35px; border-radius: 2px;
+  text-align: center; border: 1px solid rgba(200,169,110,0.2);
+  position: relative; transition: transform 0.3s ease;
+}
+.mg-tariff:hover { transform: translateY(-8px); }
+.mg-tariff.mg-featured { background: #5C1F3A; border-color: #5C1F3A; }
+.mg-tariff.mg-featured .mg-tariff-name { color: #fff; }
+.mg-tariff.mg-featured .mg-tariff-price { color: #C8A96E; }
+.mg-tariff.mg-featured .mg-tariff-early { color: rgba(255,255,255,0.6); }
+.mg-tariff.mg-featured .mg-tariff-features li { color: rgba(255,255,255,0.75); border-color: rgba(255,255,255,0.15); }
+.mg-tariff.mg-featured .mg-tariff-btn { background: #C8A96E; color: #1A1118; }
+.mg-tariff-badge {
+  position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+  background: #C8A96E; color: #1A1118; font-size: 11px; letter-spacing: 2px;
+  text-transform: uppercase; padding: 5px 16px; border-radius: 20px;
+  font-weight: 600; white-space: nowrap; font-family: 'Raleway', sans-serif;
+}
+.mg-tariff-name {
+  font-family: 'Cormorant Garamond', serif; font-size: 28px;
+  color: #1A1118; margin-bottom: 25px;
+}
+.mg-tariff-price {
+  font-family: 'Cormorant Garamond', serif; font-size: 42px;
+  color: #5C1F3A; line-height: 1; margin-bottom: 5px;
+}
+.mg-tariff-early {
+  font-size: 13px; color: #9A8A9A; margin-bottom: 30px;
+  font-family: 'Raleway', sans-serif;
+}
+.mg-tariff-features { list-style: none; text-align: left; margin-bottom: 35px; }
+.mg-tariff-features li {
+  font-size: 14px; color: #6A5A6A; padding: 10px 0 10px 22px;
+  border-bottom: 1px solid rgba(200,169,110,0.15); position: relative;
+  line-height: 1.5; font-family: 'Raleway', sans-serif;
+}
+.mg-tariff-features li::before {
+  content: '✓'; position: absolute; left: 0; color: #C8A96E; font-weight: 600;
+}
+.mg-tariff-btn {
+  display: block; background: #1A1118; color: #fff;
+  font-family: 'Raleway', sans-serif; font-size: 12px;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 16px 20px; border-radius: 2px; text-decoration: none;
+  font-weight: 600; text-align: center; width: 100%;
+}
+.mg-tariff-note {
+  text-align: center; margin-top: 40px; font-size: 14px;
+  color: #9A8A9A; line-height: 1.6; font-family: 'Raleway', sans-serif;
+}
+.mg-tariff-note strong { color: #5C1F3A; }
+
+/* ===== АДАПТИВ ===== */
+@media (max-width: 900px) {
+  .mg-about-grid, .mg-weeks, .mg-speakers-grid, .mg-tariffs-grid {
+    grid-template-columns: 1fr; gap: 40px;
+  }
+  .mg-section { padding: 70px 25px; }
+  .mg-hero-content { padding: 80px 25px; }
+}
+</style>
+
+<div class="mg-root">
+
+<!-- ===== БЛОК 1: HERO ===== -->
+<section class="mg-hero">
+  <div class="mg-sun-rays"></div>
+  <div class="mg-hero-content">
+    <p class="mg-hero-label">Академия Benedictum · Двухнедельное погружение</p>
+    <h1 class="mg-hero-title">
+      Магия женского мира:<br>
+      <em>ведьмин клубок и инициация</em>
+    </h1>
+    <p class="mg-hero-subtitle">
+      Погружение в алгоритмы женской инициации через призму русских сказок — как архаичные сюжеты влияют на современную жизнь
+    </p>
+    <div class="mg-hero-date">Старт 23 марта</div><br><br>
+    <a href="#mg-tariffs" class="mg-btn">Зарегистрироваться</a>
+  </div>
+</section>
+
+<!-- ===== БЛОК 2: О ПРОГРАММЕ ===== -->
+<section class="mg-section mg-about">
+  <div class="mg-container">
+    <div class="mg-about-grid">
+      <div>
+        <p class="mg-label">О программе</p>
+        <h2 class="mg-title">Алгоритм<br><em>женского перехода</em></h2>
+        <div class="mg-divider"></div>
+        <div class="mg-about-text">
+          <p>Женская инициация в сказках — обязательный этап, превращающий девушку в женщину, способную управлять своей жизнью.</p>
+          <p>Переход происходит по трёхчастной модели:</p>
+        </div>
+        <div class="mg-stages">
+          <div class="mg-stage">
+            <div class="mg-stage-num">I</div>
+            <div class="mg-stage-name">Отделение</div>
+          </div>
+          <div class="mg-stage">
+            <div class="mg-stage-num">II</div>
+            <div class="mg-stage-name">Трансформация</div>
+          </div>
+          <div class="mg-stage">
+            <div class="mg-stage-num">III</div>
+            <div class="mg-stage-name">Возвращение</div>
+          </div>
+        </div>
+        <div class="mg-about-text">
+          <p>Остановка на любом этапе создаёт <strong>замороженный сценарий</strong> — механизм, лишающий женщину силы и свободы действий.</p>
+        </div>
+      </div>
+      <div>
+        <p class="mg-label">Признаки</p>
+        <h2 class="mg-title">Незавершённой<br><em>инициации</em></h2>
+        <div class="mg-divider"></div>
+        <ul class="mg-symptoms">
+          <li><strong>Точка изгнания</strong>Потеря привычных социальных ролей воспринимается как катастрофа</li>
+          <li><strong>Застрявшая в «тёмном лесу»</strong>Неспособность распознать проводников и важные знаки</li>
+          <li><strong>Потеря нити</strong>Отсутствие внутреннего компаса (клубок и зеркало для правды)</li>
+          <li><strong>Отказ от короны</strong>Страх взять ответственность Принцессы или мудрость Хранительницы</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== БЛОК 3: ПРОГРАММА ===== -->
+<section class="mg-section mg-program">
+  <div class="mg-container">
+    <p class="mg-label">Расписание</p>
+    <h2 class="mg-title">Программа<br><em>курса</em></h2>
+    <div class="mg-divider"></div>
+    <div class="mg-weeks">
+      <div>
+        <div class="mg-week-header">
+          <h3>Первая неделя</h3>
+          <div class="mg-week-speaker">Спикер: Светлана Комарова</div>
+        </div>
+        <div class="mg-sched-item">
+          <div class="mg-sched-date">23 марта</div>
+          <div class="mg-sched-content">
+            <h4>Модель инициации</h4>
+            <p>Три стадии системы: отделение, трансформация, возвращение</p>
+          </div>
+        </div>
+        <div class="mg-sched-item">
+          <div class="mg-sched-date">25 марта</div>
+          <div class="mg-sched-content">
+            <h4>Архетипы и символы</h4>
+            <p>Роль Бабы-яги и сакральные инструменты: клубок, зеркало, прялка, ключ, вода</p>
+          </div>
+        </div>
+        <div class="mg-sched-item">
+          <div class="mg-sched-date">27 марта</div>
+          <div class="mg-sched-content">
+            <h4>Итоги перехода</h4>
+            <p>Маркеры зрелости и критерии нового статуса</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="mg-week-header" style="background:#2D1B2D;">
+          <h3>Вторая неделя</h3>
+          <div class="mg-week-speaker">Спикер: Елена Соломина</div>
+        </div>
+        <div class="mg-sched-item">
+          <div class="mg-sched-date">31 марта</div>
+          <div class="mg-sched-content">
+            <h4>Повторение как проверка</h4>
+            <p>Механизм подтверждения зрелости через паттерны</p>
+          </div>
+        </div>
+        <div class="mg-sched-item">
+          <div class="mg-sched-date">2 апреля</div>
+          <div class="mg-sched-content">
+            <h4>Законы обмена</h4>
+            <p>Личное счастье через служение и баланс между «брать» и «давать»</p>
+          </div>
+        </div>
+        <div class="mg-sched-item mg-sched-special">
+          <div class="mg-sched-date">3 апреля</div>
+          <div class="mg-sched-content">
+            <h4>Спецэфир ✦</h4>
+            <p>Александра Демьяненко — ведьмина инициация или бытовая магия<br><em style="font-size:12px;opacity:0.7;">Только для Внутреннего и Частного кругов</em></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== БЛОК 4: СПИКЕРЫ ===== -->
+<section class="mg-section mg-speakers">
+  <div class="mg-container">
+    <p class="mg-label">Кто ведёт</p>
+    <h2 class="mg-title">Спикеры<br><em>программы</em></h2>
+    <div class="mg-divider"></div>
+    <div class="mg-speakers-grid">
+      <div class="mg-speaker">
+        <!-- ЗАМЕНИТЕ src на URL фото из медиатеки Tilda -->
+        <img src="ВСТАВЬТЕ_URL_ФОТО_1" alt="Светлана Комарова" class="mg-speaker-photo">
+        <div class="mg-speaker-name">Светлана Комарова</div>
+        <div class="mg-speaker-role">Бизнес-психолог</div>
+        <p class="mg-speaker-bio">Автор книги «Бизнес ведьмы», основатель Академии Benedictum. Специалист по женским архетипам и психологии в бизнесе.</p>
+      </div>
+      <div class="mg-speaker">
+        <img src="ВСТАВЬТЕ_URL_ФОТО_2" alt="Елена Соломина" class="mg-speaker-photo">
+        <div class="mg-speaker-name">Елена Соломина</div>
+        <div class="mg-speaker-role">Психолог · Член ОППЛ</div>
+        <p class="mg-speaker-bio">Специалист по глубинной групповой психологии, эксперт по влиянию сказок на современную жизнь женщины.</p>
+      </div>
+      <div class="mg-speaker">
+        <img src="ВСТАВЬТЕ_URL_ФОТО_3" alt="Александра Демьяненко" class="mg-speaker-photo">
+        <div class="mg-speaker-name">Александра Демьяненко</div>
+        <div class="mg-speaker-role">Эксперт по фольклору</div>
+        <p class="mg-speaker-bio">Эксперт по русскому фольклору и мифологии, психолог. Специализируется на архетипических образах и народных традициях.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== БЛОК 5: ТАРИФЫ ===== -->
+<section class="mg-section mg-tariffs" id="mg-tariffs">
+  <div class="mg-container">
+    <p class="mg-label">Участие</p>
+    <h2 class="mg-title">Выберите<br><em>свой круг</em></h2>
+    <div class="mg-divider"></div>
+    <div class="mg-tariffs-grid">
+      <div class="mg-tariff">
+        <div class="mg-tariff-name">Внешний круг</div>
+        <div class="mg-tariff-price">14 700 ₽</div>
+        <div class="mg-tariff-early">до 16 марта — <strong style="color:#C8A96E">13 300 ₽</strong></div>
+        <ul class="mg-tariff-features">
+          <li>Доступ к вебинарам как слушатель</li>
+          <li>Записи всех эфиров</li>
+        </ul>
+        <a href="#" class="mg-tariff-btn">Выбрать</a>
+      </div>
+      <div class="mg-tariff mg-featured">
+        <div class="mg-tariff-badge">Популярный выбор</div>
+        <div class="mg-tariff-name">Внутренний круг</div>
+        <div class="mg-tariff-price">21 100 ₽</div>
+        <div class="mg-tariff-early">до 16 марта — <strong style="color:#C8A96E">18 800 ₽</strong></div>
+        <ul class="mg-tariff-features">
+          <li>Интерактивная работа с обратной связью</li>
+          <li>Онлайн-встречи с участниками</li>
+          <li>Эксклюзивный эфир Демьяненко о бытовой магии</li>
+          <li>Записи всех эфиров</li>
+        </ul>
+        <a href="#" class="mg-tariff-btn">Выбрать</a>
+      </div>
+      <div class="mg-tariff">
+        <div class="mg-tariff-name">Частный круг</div>
+        <div class="mg-tariff-price">33 300 ₽</div>
+        <div class="mg-tariff-early">до 16 марта — <strong style="color:#C8A96E">30 300 ₽</strong></div>
+        <ul class="mg-tariff-features">
+          <li>Максимальная плотность работы</li>
+          <li>Индивидуальный разбор</li>
+          <li>Всё из Внутреннего круга</li>
+          <li>Закрытая консультация со спикерами (до 10 чел.)</li>
+        </ul>
+        <a href="#" class="mg-tariff-btn">Выбрать</a>
+      </div>
+    </div>
+    <p class="mg-tariff-note">
+      Ранняя цена действует <strong>до 16 марта</strong><br>
+      Если вы посещали флагманские курсы — напишите нам об особых условиях
+    </p>
+  </div>
+</section>
+
+</div>
