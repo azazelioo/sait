@@ -1,14 +1,31 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap');
 
-/* Histori Pro используется если загружена в медиатеку Tilda; иначе — Playfair Display */
+/*
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  КАК ВСТАВИТЬ ИЗОБРАЖЕНИЕ ИЗ TILDA MEDIA LIBRARY            ║
+  ║                                                              ║
+  ║  1. Tilda → ваша страница → кнопка «Медиатека» (или        ║
+  ║     Настройки сайта → Медиатека)                            ║
+  ║  2. Загрузите нужное изображение                            ║
+  ║  3. Кликните на файл — скопируйте прямую ссылку             ║
+  ║     (выглядит как: https://static.tildacdn.com/tild-…/…jpg) ║
+  ║  4. В коде ниже найдите нужный блок и замените текст        ║
+  ║     TILDA_URL_XXX на скопированную ссылку                   ║
+  ║  Пример:                                                     ║
+  ║  background-image: url('https://static.tildacdn.com/…jpg'); ║
+  ╚══════════════════════════════════════════════════════════════╝
+*/
+
 .mg-root {
   --copper: #C87941;
-  --olive:  #6B7A2A;
-  --dark:   #1A1A1A;
-  --silver: #C0C0C0;
-  --light:  #F2F2F2;
-  /* Выход за пределы Tilda-контейнера — растяжка на всю ширину экрана */
+  --gold:   #D4A855;
+  --olive:  #5A6B1E;
+  --forest: #1E2A0A;
+  --warm-dark: #16110A;
+  --cream:  #FBF5E8;
+  --parchment: #F3E8CC;
+  --text:   #2A1F0A;
   width: 100vw;
   position: relative;
   left: 50%;
@@ -16,99 +33,77 @@
   max-width: none !important;
   overflow-x: hidden;
 }
-
 .mg-root * { box-sizing: border-box; }
+
+/* ===== СВЕТЛЯЧКИ (canvas-оверлей) ===== */
+#mg-fireflies {
+  position: fixed; top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none; z-index: 9999;
+  opacity: 0.55;
+}
 
 /* ===== БЛОК 1: HERO ===== */
 .mg-hero {
   min-height: 100vh;
-  background: linear-gradient(150deg, #111208 0%, #2A3015 45%, #3D5010 75%, #1A1A1A 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
+  /* ▼ ЗАМЕНИТЬ URL на фото тёмного леса с ведьминым клубком */
+  background-image: url('TILDA_URL_HERO_FOREST');
+  background-size: cover; background-position: center;
+  /* Fallback-градиент (виден пока фото не загружено) */
+  background-color: #0A1205;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; position: relative; overflow: hidden;
 }
 .mg-hero::before {
   content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 50% 0%, rgba(200,121,65,0.25) 0%, transparent 55%),
-              radial-gradient(ellipse at 80% 100%, rgba(107,122,42,0.35) 0%, transparent 50%);
-}
-.mg-sun-rays {
-  position: absolute;
-  top: -20%; left: 50%;
-  transform: translateX(-50%);
-  width: 200%; height: 200%;
-  background: conic-gradient(
-    from 0deg,
-    transparent 0deg, rgba(200,121,65,0.04) 10deg,
-    transparent 20deg, rgba(200,121,65,0.04) 30deg,
-    transparent 40deg, rgba(200,121,65,0.04) 50deg,
-    transparent 60deg, rgba(200,121,65,0.04) 70deg,
-    transparent 80deg, rgba(200,121,65,0.04) 90deg,
-    transparent 100deg, rgba(200,121,65,0.04) 110deg,
-    transparent 120deg, rgba(200,121,65,0.04) 130deg,
-    transparent 140deg, rgba(200,121,65,0.04) 150deg,
-    transparent 160deg, rgba(200,121,65,0.04) 170deg,
-    transparent 180deg, rgba(200,121,65,0.04) 190deg,
-    transparent 200deg, rgba(200,121,65,0.04) 210deg,
-    transparent 220deg, rgba(200,121,65,0.04) 230deg,
-    transparent 240deg, rgba(200,121,65,0.04) 250deg,
-    transparent 260deg, rgba(200,121,65,0.04) 270deg,
-    transparent 280deg, rgba(200,121,65,0.04) 290deg,
-    transparent 300deg, rgba(200,121,65,0.04) 310deg,
-    transparent 320deg, rgba(200,121,65,0.04) 330deg,
-    transparent 340deg, rgba(200,121,65,0.04) 350deg,
-    transparent 360deg
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(5,12,3,0.62) 0%,
+    rgba(10,20,5,0.45) 40%,
+    rgba(5,15,3,0.68) 100%
   );
-  animation: mgRotateSun 80s linear infinite;
-  pointer-events: none;
-}
-@keyframes mgRotateSun {
-  from { transform: translateX(-50%) rotate(0deg); }
-  to   { transform: translateX(-50%) rotate(360deg); }
 }
 .mg-hero-content {
   position: relative; z-index: 2;
-  padding: 80px 40px; max-width: 960px;
+  padding: 80px 40px; max-width: 900px;
 }
 .mg-hero-label {
   font-family: 'Montserrat', sans-serif; font-weight: 300;
-  font-size: 13px; letter-spacing: 5px; text-transform: uppercase;
-  color: #C87941; margin-bottom: 28px;
+  font-size: 12px; letter-spacing: 6px; text-transform: uppercase;
+  color: rgba(212,168,85,0.9); margin-bottom: 28px;
 }
 .mg-hero-title {
   font-family: 'Histori Pro', 'Playfair Display', serif; font-weight: 400;
-  font-size: clamp(38px, 6.5vw, 76px); line-height: 1.1;
-  color: #fff; margin-bottom: 18px;
+  font-size: clamp(36px, 6vw, 72px); line-height: 1.12;
+  color: #F5EED4; margin-bottom: 20px;
+  text-shadow: 0 2px 24px rgba(0,0,0,0.7);
 }
-.mg-hero-title em { font-style: italic; color: #C87941; }
+.mg-hero-title em { font-style: italic; color: #D4A855; }
 .mg-hero-subtitle {
   font-family: 'Montserrat', sans-serif; font-weight: 300;
-  font-size: clamp(15px, 2vw, 19px); color: rgba(255,255,255,0.7);
-  line-height: 1.8; margin-bottom: 50px;
+  font-size: clamp(15px, 1.8vw, 18px); color: rgba(240,230,200,0.82);
+  line-height: 1.85; margin-bottom: 44px;
   max-width: 680px; margin-left: auto; margin-right: auto;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.5);
 }
 .mg-hero-date {
   display: inline-block;
-  background: rgba(200,121,65,0.15); border: 1px solid rgba(200,121,65,0.6);
-  color: #C87941; font-size: 13px; letter-spacing: 4px;
-  text-transform: uppercase; padding: 12px 32px;
+  background: rgba(212,168,85,0.12); border: 1px solid rgba(212,168,85,0.55);
+  color: #D4A855; font-size: 12px; letter-spacing: 5px;
+  text-transform: uppercase; padding: 11px 30px;
   border-radius: 2px; margin-bottom: 36px;
   font-family: 'Montserrat', sans-serif; font-weight: 500;
-  display: block;
 }
 .mg-btn {
-  display: inline-block; background: #C87941; color: #1A1A1A;
+  display: inline-block; background: #C87941; color: #1A1000;
   font-family: 'Montserrat', sans-serif; font-weight: 600;
-  font-size: 13px; letter-spacing: 3px; text-transform: uppercase;
-  padding: 18px 52px; border-radius: 2px; text-decoration: none;
+  font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
+  padding: 17px 50px; border-radius: 2px; text-decoration: none;
   transition: all 0.3s ease; cursor: pointer; border: none;
+  box-shadow: 0 4px 20px rgba(200,121,65,0.35);
 }
-.mg-btn:hover { background: #A8612A; transform: translateY(-2px); }
+.mg-btn:hover { background: #B86B2E; transform: translateY(-2px); box-shadow: 0 6px 28px rgba(200,121,65,0.45); }
 
 /* ===== ОБЩИЕ СТИЛИ СЕКЦИЙ ===== */
 .mg-section { padding: 100px 40px; }
@@ -120,267 +115,315 @@
 }
 .mg-title {
   font-family: 'Histori Pro', 'Playfair Display', serif; font-weight: 400;
-  font-size: clamp(30px, 4.5vw, 50px); line-height: 1.15;
-  color: #1A1A1A; margin-bottom: 28px;
+  font-size: clamp(28px, 4vw, 48px); line-height: 1.18;
+  color: var(--text); margin-bottom: 28px;
 }
-.mg-title em { font-style: italic; color: #6B7A2A; }
-.mg-title--light { color: #fff; }
-.mg-title--light em { color: #C87941; }
+.mg-title em { font-style: italic; color: var(--olive); }
+.mg-title--light { color: #F5EED4; }
+.mg-title--light em { color: #D4A855; }
+.mg-title--gold { color: #2A1A00; }
+.mg-title--gold em { color: #8B5E0A; }
 .mg-divider { width: 56px; height: 1px; background: #C87941; margin-bottom: 40px; }
 
 /* ===== БЛОК 2: АЛГОРИТМ ===== */
-.mg-about { background: #fff; }
+.mg-about {
+  /* ▼ ЗАМЕНИТЬ URL на фото леса с лучами света и тремя пнями */
+  background-image: url('TILDA_URL_FOREST_RAYS');
+  background-size: cover; background-position: center 30%;
+  background-color: #F3E8CC;
+  position: relative;
+}
+.mg-about::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: rgba(251,245,232,0.82);
+}
+.mg-about .mg-container { position: relative; z-index: 1; }
 .mg-about-grid {
   display: grid; grid-template-columns: 1fr 1fr;
-  gap: 80px; align-items: start;
+  gap: 72px; align-items: start;
 }
 .mg-about-text p {
-  font-size: 16px; line-height: 1.9; color: #3A3A3A;
+  font-size: 16px; line-height: 1.9; color: #3A2A10;
   margin-bottom: 22px; font-family: 'Montserrat', sans-serif; font-weight: 300;
 }
-.mg-about-text strong { color: #6B7A2A; font-weight: 600; }
-.mg-stages { display: flex; margin: 32px 0; }
+.mg-about-text strong { color: var(--olive); font-weight: 600; }
+.mg-stages { display: flex; margin: 28px 0; }
 .mg-stage {
-  flex: 1; text-align: center; padding: 20px 10px; position: relative;
+  flex: 1; text-align: center; padding: 18px 8px; position: relative;
+  background: rgba(255,255,255,0.6); border-radius: 4px; margin: 0 4px;
 }
 .mg-stage::after {
-  content: '→'; position: absolute; right: -8px; top: 50%;
-  transform: translateY(-50%); color: #C87941; font-size: 18px;
+  content: '→'; position: absolute; right: -12px; top: 50%;
+  transform: translateY(-50%); color: #C87941; font-size: 16px; z-index: 1;
 }
 .mg-stage:last-child::after { display: none; }
 .mg-stage-num {
-  font-family: 'Histori Pro', 'Playfair Display', serif; font-size: 34px;
-  color: #C87941; opacity: 0.5; line-height: 1; margin-bottom: 8px;
+  font-family: 'Histori Pro', 'Playfair Display', serif; font-size: 30px;
+  color: #C87941; opacity: 0.6; line-height: 1; margin-bottom: 8px;
 }
 .mg-stage-name {
-  font-size: 12px; letter-spacing: 1px; text-transform: uppercase;
-  color: #6B7A2A; font-weight: 600; font-family: 'Montserrat', sans-serif;
+  font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
+  color: #5A6B1E; font-weight: 600; font-family: 'Montserrat', sans-serif;
 }
-
-/* ===== БЛОК 3: ПРИЗНАКИ ===== */
-.mg-signs { background: linear-gradient(180deg, #F2F2F2 0%, #E8E8E8 100%); }
 .mg-symptoms { list-style: none; }
 .mg-symptoms li {
-  padding: 22px 0 22px 36px; border-bottom: 1px solid rgba(200,121,65,0.2);
-  position: relative; font-size: 15px; line-height: 1.7;
-  color: #3A3A3A; font-family: 'Montserrat', sans-serif; font-weight: 300;
+  padding: 20px 0 20px 34px; border-bottom: 1px solid rgba(200,121,65,0.2);
+  position: relative; font-size: 14px; line-height: 1.75;
+  color: #3A2A10; font-family: 'Montserrat', sans-serif; font-weight: 300;
 }
 .mg-symptoms li:first-child { border-top: 1px solid rgba(200,121,65,0.2); }
 .mg-symptoms li::before {
   content: '◆'; position: absolute; left: 0; color: #C87941;
-  font-size: 9px; top: 26px;
+  font-size: 8px; top: 24px;
 }
 .mg-symptoms li strong {
-  display: block; color: #1A1A1A; font-weight: 600;
-  margin-bottom: 5px; font-size: 15px;
+  display: block; color: #2A1A00; font-weight: 600;
+  margin-bottom: 4px; font-size: 14px;
   font-family: 'Montserrat', sans-serif;
 }
 
-/* ===== БЛОК 4: ПРОГРАММА ===== */
-.mg-program { background: #fff; }
-.mg-weeks { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+/* ===== БЛОК 3: ПРОГРАММА ===== */
+.mg-program { background: var(--cream); }
+.mg-weeks { display: grid; grid-template-columns: 1fr 1fr; gap: 44px; }
 .mg-week-header {
-  background: #6B7A2A; color: #fff; padding: 22px 28px;
-  border-radius: 2px 2px 0 0;
+  background: linear-gradient(135deg, #5A6B1E, #3D4D10); color: #F5EED4;
+  padding: 22px 28px; border-radius: 3px 3px 0 0;
 }
-.mg-week-header--alt { background: #2A3015; }
+.mg-week-header--alt { background: linear-gradient(135deg, #2A3015, #1A2008); }
 .mg-week-header h3 {
   font-family: 'Histori Pro', 'Playfair Display', serif; font-weight: 400;
-  font-size: 22px; margin-bottom: 5px;
+  font-size: 21px; margin-bottom: 5px; color: #F5EED4;
 }
 .mg-week-speaker {
   font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
-  color: rgba(255,255,255,0.6); font-family: 'Montserrat', sans-serif;
+  color: rgba(212,168,85,0.75); font-family: 'Montserrat', sans-serif;
 }
 .mg-sched-item {
-  display: flex; gap: 22px; padding: 24px 28px;
-  background: #fff; border-bottom: 1px solid rgba(107,122,42,0.12);
+  display: flex; gap: 20px; padding: 22px 28px;
+  background: rgba(255,255,255,0.85); border-bottom: 1px solid rgba(107,122,42,0.12);
 }
-.mg-sched-item:last-child { border-radius: 0 0 2px 2px; border-bottom: none; border: 1px solid rgba(107,122,42,0.12); border-top: none; }
+.mg-sched-item:last-child {
+  border-radius: 0 0 3px 3px; border-bottom: none;
+  border: 1px solid rgba(107,122,42,0.12); border-top: none;
+}
 .mg-sched-date {
-  min-width: 88px; font-size: 11px; letter-spacing: 1px;
+  min-width: 86px; font-size: 11px; letter-spacing: 1px;
   text-transform: uppercase; color: #C87941; font-weight: 600;
-  padding-top: 4px; font-family: 'Montserrat', sans-serif;
+  padding-top: 3px; font-family: 'Montserrat', sans-serif;
 }
 .mg-sched-content h4 {
-  font-family: 'Histori Pro', 'Playfair Display', serif; font-size: 19px;
-  color: #1A1A1A; margin-bottom: 6px; font-weight: 400;
+  font-family: 'Histori Pro', 'Playfair Display', serif; font-size: 18px;
+  color: #2A1A00; margin-bottom: 6px; font-weight: 400;
 }
 .mg-sched-content p {
-  font-size: 14px; color: #666; line-height: 1.6;
+  font-size: 13px; color: #5A4A2A; line-height: 1.65;
   font-family: 'Montserrat', sans-serif; font-weight: 300;
 }
 .mg-sched-special { background: linear-gradient(135deg, #2A3015, #4A5C1A); }
-.mg-sched-special .mg-sched-date { color: #C87941; }
-.mg-sched-special .mg-sched-content h4 { color: #fff; }
-.mg-sched-special .mg-sched-content p { color: rgba(255,255,255,0.6); }
+.mg-sched-special .mg-sched-date { color: #D4A855; }
+.mg-sched-special .mg-sched-content h4 { color: #F5EED4; }
+.mg-sched-special .mg-sched-content p { color: rgba(240,230,200,0.65); }
 
-/* ===== БЛОК 5: СПИКЕРЫ ===== */
-.mg-speakers { background: #1A1A1A; }
+/* ===== БЛОК 4: СПИКЕРЫ ===== */
+.mg-speakers {
+  background: linear-gradient(180deg, #141A08 0%, #1E2A0A 100%);
+}
 .mg-speakers-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 44px;
 }
 .mg-speaker { text-align: center; }
 .mg-speaker-photo {
-  width: 190px; height: 190px; border-radius: 50%;
+  width: 180px; height: 180px; border-radius: 50%;
   object-fit: cover; object-position: top;
-  margin: 0 auto 24px; display: block;
-  border: 2px solid #C87941; filter: grayscale(20%);
+  margin: 0 auto 22px; display: block;
+  border: 2px solid rgba(200,121,65,0.6);
+  filter: grayscale(10%) sepia(10%);
 }
 .mg-speaker-name {
-  font-family: 'Histori Pro', 'Playfair Display', serif; font-size: 22px;
-  color: #fff; margin-bottom: 8px; font-weight: 400;
+  font-family: 'Histori Pro', 'Playfair Display', serif; font-size: 21px;
+  color: #F5EED4; margin-bottom: 8px; font-weight: 400;
 }
 .mg-speaker-role {
-  font-size: 11px; color: #C87941; letter-spacing: 2px;
-  text-transform: uppercase; margin-bottom: 16px;
+  font-size: 10px; color: #D4A855; letter-spacing: 2px;
+  text-transform: uppercase; margin-bottom: 14px;
   font-family: 'Montserrat', sans-serif; font-weight: 500;
 }
 .mg-speaker-bio {
-  font-size: 14px; line-height: 1.8; color: rgba(255,255,255,0.72);
+  font-size: 13px; line-height: 1.85; color: rgba(240,230,200,0.72);
   font-family: 'Montserrat', sans-serif; font-weight: 300;
 }
 
-/* ===== БЛОК 6: СТАТУСЫ ===== */
-.mg-statuses { background: linear-gradient(180deg, #F2F2F2 0%, #E5E5E5 100%); }
-.mg-status-table {
-  width: 100%; border-collapse: collapse; margin-top: 50px;
+/* ===== БЛОК 5: СТАТУСЫ ===== */
+.mg-statuses {
+  /* ▼ ЗАМЕНИТЬ URL на фото трёх золотых тронов на светлом фоне */
+  background-image: url('TILDA_URL_THRONES');
+  background-size: cover; background-position: center top;
+  background-color: #F0D890;
+  position: relative;
 }
-.mg-status-table thead tr {
-  background: #1A1A1A;
+.mg-statuses::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: rgba(250,240,200,0.78);
 }
-.mg-status-table thead th {
-  padding: 18px 24px; text-align: left;
-  font-family: 'Montserrat', sans-serif; font-weight: 500;
-  font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
-  color: #C87941;
+.mg-statuses .mg-container { position: relative; z-index: 1; }
+.mg-statuses .mg-label { color: #8B5E0A; }
+.mg-statuses .mg-title { color: #2A1500; }
+.mg-statuses .mg-title em { color: #8B5E0A; }
+.mg-statuses .mg-divider { background: #B8860B; }
+
+.mg-status-cards {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 32px; margin-top: 52px;
 }
-.mg-status-table tbody tr {
-  background: #fff; border-bottom: 1px solid rgba(107,122,42,0.15);
-  transition: background 0.2s;
+.mg-status-card {
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(184,134,11,0.25);
+  padding: 36px 28px; border-radius: 4px;
+  text-align: center;
 }
-.mg-status-table tbody tr:hover { background: #F9F9F9; }
-.mg-status-table tbody tr:last-child { border-bottom: none; }
-.mg-status-table td {
-  padding: 28px 24px; vertical-align: top;
+.mg-status-card-icon {
+  font-size: 28px; margin-bottom: 14px; display: block;
 }
-.mg-status-name {
-  font-family: 'Histori Pro', 'Playfair Display', serif; font-size: 22px;
-  color: #6B7A2A; font-weight: 400; white-space: nowrap;
+.mg-status-card-name {
+  font-family: 'Histori Pro', 'Playfair Display', serif;
+  font-size: 24px; color: #2A1500; margin-bottom: 16px;
+  font-weight: 400;
 }
-.mg-status-desc {
-  font-family: 'Montserrat', sans-serif; font-size: 15px;
-  color: #3A3A3A; line-height: 1.7; font-weight: 300;
+.mg-status-card-desc {
+  font-family: 'Montserrat', sans-serif; font-size: 14px;
+  color: #3A2A00; line-height: 1.75; font-weight: 300;
 }
 
-/* ===== БЛОК 7: ТАРИФЫ ===== */
-.mg-tariffs { background: #1A1A1A; }
-.mg-tariffs .mg-title { color: #fff; }
-.mg-tariffs .mg-label { color: #C87941; }
+/* ===== БЛОК 6: ТАРИФЫ ===== */
+.mg-tariffs {
+  background: linear-gradient(180deg, #16110A 0%, #1E1A0E 100%);
+}
+.mg-tariffs .mg-title { color: #F5EED4; }
+.mg-tariffs .mg-label { color: #D4A855; }
+.mg-tariffs .mg-divider { background: #C87941; }
 .mg-tariffs-grid {
   display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 28px; margin-top: 60px;
+  gap: 24px; margin-top: 56px;
 }
 .mg-tariff {
-  background: #242424; padding: 48px 32px; border-radius: 2px;
-  text-align: center; border: 1px solid rgba(200,121,65,0.2);
-  position: relative; transition: transform 0.3s ease;
+  background: rgba(255,255,255,0.05); padding: 44px 28px; border-radius: 3px;
+  text-align: center; border: 1px solid rgba(200,121,65,0.22);
+  position: relative; transition: transform 0.3s ease, background 0.3s ease;
 }
-.mg-tariff:hover { transform: translateY(-6px); }
+.mg-tariff:hover { transform: translateY(-6px); background: rgba(255,255,255,0.08); }
 .mg-tariff.mg-featured {
-  background: #6B7A2A; border-color: #6B7A2A;
+  background: linear-gradient(160deg, #5A6B1E, #3D5010);
+  border-color: #7A8B2A;
 }
-.mg-tariff.mg-featured .mg-tariff-name { color: #fff; }
+.mg-tariff.mg-featured:hover { background: linear-gradient(160deg, #6B7A2A, #4A5C1A); }
+.mg-tariff.mg-featured .mg-tariff-name { color: #F5EED4; }
 .mg-tariff.mg-featured .mg-tariff-price { color: #fff; }
-.mg-tariff.mg-featured .mg-tariff-early { color: rgba(255,255,255,0.75); }
+.mg-tariff.mg-featured .mg-tariff-early { color: rgba(240,230,200,0.75); }
 .mg-tariff.mg-featured .mg-tariff-early strong { color: #FFD49A; }
 .mg-tariff.mg-featured .mg-tariff-features li {
-  color: rgba(255,255,255,0.8); border-color: rgba(255,255,255,0.15);
+  color: rgba(240,230,200,0.82); border-color: rgba(255,255,255,0.14);
 }
-.mg-tariff.mg-featured .mg-tariff-btn { background: #C87941; color: #1A1A1A; }
+.mg-tariff.mg-featured .mg-tariff-btn { background: #C87941; color: #1A0800; }
 .mg-tariff-badge {
   position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
-  background: #C87941; color: #1A1A1A; font-size: 11px; letter-spacing: 2px;
+  background: #C87941; color: #1A0800; font-size: 10px; letter-spacing: 2px;
   text-transform: uppercase; padding: 5px 16px; border-radius: 20px;
   font-weight: 600; white-space: nowrap; font-family: 'Montserrat', sans-serif;
 }
 .mg-tariff-name {
-  font-family: 'Histori Pro', 'Playfair Display', serif; font-size: 26px;
-  color: #fff; margin-bottom: 24px; font-weight: 400;
+  font-family: 'Histori Pro', 'Playfair Display', serif; font-size: 24px;
+  color: #F5EED4; margin-bottom: 22px; font-weight: 400;
 }
 .mg-tariff-price {
-  font-family: 'Histori Pro', 'Playfair Display', serif; font-size: 40px;
-  color: #C87941; line-height: 1; margin-bottom: 5px;
+  font-family: 'Histori Pro', 'Playfair Display', serif; font-size: 38px;
+  color: #D4A855; line-height: 1; margin-bottom: 5px;
 }
 .mg-tariff-early {
-  font-size: 13px; color: #888; margin-bottom: 28px;
-  font-family: 'Montserrat', sans-serif; font-weight: 300; line-height: 1.5;
+  font-size: 12px; color: rgba(200,180,130,0.7); margin-bottom: 26px;
+  font-family: 'Montserrat', sans-serif; font-weight: 300; line-height: 1.55;
 }
-.mg-tariff-features { list-style: none; text-align: left; margin-bottom: 32px; }
+.mg-tariff-features { list-style: none; text-align: left; margin-bottom: 28px; }
 .mg-tariff-features li {
-  font-size: 14px; color: #aaa; padding: 10px 0 10px 22px;
-  border-bottom: 1px solid rgba(200,121,65,0.12); position: relative;
+  font-size: 13px; color: rgba(220,200,160,0.8); padding: 10px 0 10px 20px;
+  border-bottom: 1px solid rgba(200,121,65,0.1); position: relative;
   line-height: 1.6; font-family: 'Montserrat', sans-serif; font-weight: 300;
 }
 .mg-tariff-features li::before {
   content: '✓'; position: absolute; left: 0; color: #C87941; font-weight: 600;
 }
 .mg-tariff-btn {
-  display: block; background: #C87941; color: #1A1A1A;
-  font-family: 'Montserrat', sans-serif; font-size: 12px;
+  display: block; background: rgba(200,121,65,0.85); color: #1A0800;
+  font-family: 'Montserrat', sans-serif; font-size: 11px;
   letter-spacing: 3px; text-transform: uppercase;
-  padding: 16px 20px; border-radius: 2px; text-decoration: none;
+  padding: 15px 20px; border-radius: 2px; text-decoration: none;
   font-weight: 600; text-align: center; width: 100%;
   transition: all 0.3s ease;
 }
-.mg-tariff-btn:hover { opacity: 0.85; }
+.mg-tariff-btn:hover { background: #C87941; }
 .mg-tariff-note {
-  text-align: center; margin-top: 44px; font-size: 13px;
-  color: rgba(255,255,255,0.4); line-height: 1.7;
-  font-family: 'Montserrat', sans-serif; font-weight: 300;
-  letter-spacing: 1px;
+  text-align: center; margin-top: 40px; font-size: 13px;
+  color: rgba(220,200,160,0.5); line-height: 1.7;
+  font-family: 'Montserrat', sans-serif; font-weight: 300; letter-spacing: 1px;
 }
-.mg-tariff-note strong { color: #C87941; font-weight: 500; }
+.mg-tariff-note strong { color: #D4A855; font-weight: 500; }
 
-/* ===== БЛОК 8: ФИНАЛ ===== */
+/* ===== БЛОК 7: ФИНАЛ ===== */
 .mg-finale {
-  background: linear-gradient(150deg, #111208 0%, #2A3015 50%, #1A1A1A 100%);
+  /* ▼ ЗАМЕНИТЬ URL на фото тёмного леса слева + золотая дорога справа */
+  background-image: url('TILDA_URL_FINALE_FOREST');
+  background-size: cover; background-position: center;
+  background-color: #0A1205;
   padding: 120px 40px;
   text-align: center;
-  position: relative;
-  overflow: hidden;
+  position: relative; overflow: hidden;
 }
 .mg-finale::before {
   content: '';
   position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 50% 50%, rgba(200,121,65,0.1) 0%, transparent 65%);
+  background: linear-gradient(
+    180deg,
+    rgba(8,14,4,0.65) 0%,
+    rgba(15,20,8,0.55) 50%,
+    rgba(8,12,3,0.72) 100%
+  );
 }
-.mg-finale-content { position: relative; z-index: 2; max-width: 700px; margin: 0 auto; }
+.mg-finale-content { position: relative; z-index: 2; max-width: 720px; margin: 0 auto; }
+.mg-finale-title {
+  font-family: 'Histori Pro', 'Playfair Display', serif;
+  font-size: clamp(26px, 4vw, 42px); color: #D4A855;
+  margin-bottom: 36px; font-weight: 400; font-style: italic;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.6);
+}
 .mg-finale p {
-  font-family: 'Histori Pro', 'Playfair Display', serif; font-style: italic;
-  font-size: clamp(20px, 3vw, 30px); line-height: 1.7; color: rgba(255,255,255,0.8);
-  margin-bottom: 50px;
+  font-family: 'Montserrat', sans-serif; font-weight: 300;
+  font-size: clamp(16px, 2.2vw, 20px); line-height: 1.85;
+  color: rgba(240,230,200,0.88); margin-bottom: 44px;
+  text-shadow: 0 1px 10px rgba(0,0,0,0.5);
 }
-.mg-finale p em { color: #C87941; font-style: normal; }
+.mg-finale p em { color: #D4A855; font-style: normal; font-weight: 500; }
 
 /* ===== АДАПТИВ ===== */
 @media (max-width: 960px) {
-  .mg-about-grid, .mg-weeks, .mg-speakers-grid, .mg-tariffs-grid {
-    grid-template-columns: 1fr; gap: 40px;
+  .mg-about-grid, .mg-weeks, .mg-speakers-grid,
+  .mg-tariffs-grid, .mg-status-cards {
+    grid-template-columns: 1fr; gap: 32px;
   }
-  .mg-status-table thead th:last-child,
-  .mg-status-table tbody td:last-child { display: none; }
-  .mg-section { padding: 70px 24px; }
-  .mg-hero-content { padding: 80px 24px; }
-  .mg-finale { padding: 80px 24px; }
+  .mg-section { padding: 70px 22px; }
+  .mg-hero-content { padding: 80px 22px; }
+  .mg-finale { padding: 80px 22px; }
 }
 </style>
 
 <div class="mg-root">
 
+<!-- ===== СВЕТЛЯЧКИ ===== -->
+<canvas id="mg-fireflies"></canvas>
+
 <!-- ===== БЛОК 1: HERO ===== -->
 <section class="mg-hero">
-  <div class="mg-sun-rays"></div>
   <div class="mg-hero-content">
     <p class="mg-hero-label">Академия Benedictum · Двухнедельное погружение</p>
     <h1 class="mg-hero-title">
@@ -524,7 +567,7 @@
 <!-- ===== БЛОК 4: СПИКЕРЫ ===== -->
 <section class="mg-section mg-speakers">
   <div class="mg-container">
-    <p class="mg-label" style="color:#C87941;">Кто ведёт этот процесс</p>
+    <p class="mg-label" style="color:#D4A855;">Кто ведёт этот процесс</p>
     <h2 class="mg-title mg-title--light">Спикеры<br><em>программы</em></h2>
     <div class="mg-divider"></div>
     <div class="mg-speakers-grid">
@@ -555,33 +598,28 @@
 <section class="mg-section mg-statuses">
   <div class="mg-container">
     <p class="mg-label">Результат</p>
-    <h2 class="mg-title">Статусы после<br><em>инициации</em></h2>
-    <div class="mg-divider"></div>
-    <p style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:16px;color:#3A3A3A;line-height:1.8;max-width:700px;margin-bottom:0;">
+    <h2 class="mg-title mg-title--gold">Статусы после<br><em>инициации</em></h2>
+    <div class="mg-divider" style="background:#B8860B;"></div>
+    <p style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:16px;color:#3A2A00;line-height:1.8;max-width:680px;">
       Результатом прохождения пути становится интеграция опыта и переход в зрелую роль:
     </p>
-    <table class="mg-status-table">
-      <thead>
-        <tr>
-          <th>Статус</th>
-          <th>Приобретённые качества</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><div class="mg-status-name">Волшебная жена</div></td>
-          <td><div class="mg-status-desc">Женщина, осознающая свою силу и способность трансформировать реальность. Владение тайными знаниями.</div></td>
-        </tr>
-        <tr>
-          <td><div class="mg-status-name">Княгиня</div></td>
-          <td><div class="mg-status-desc">Лидер, принимающий решения. Женщина, умеющая управлять процессами и нести ответственность.</div></td>
-        </tr>
-        <tr>
-          <td><div class="mg-status-name">Хранительница</div></td>
-          <td><div class="mg-status-desc">Носитель мудрости и опыта. Связь с традициями рода, способность сохранять, анализировать и передавать опыт.</div></td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="mg-status-cards">
+      <div class="mg-status-card">
+        <span class="mg-status-card-icon">✦</span>
+        <div class="mg-status-card-name">Волшебная жена</div>
+        <p class="mg-status-card-desc">Женщина, осознающая свою силу и способность трансформировать реальность. Владение тайными знаниями.</p>
+      </div>
+      <div class="mg-status-card">
+        <span class="mg-status-card-icon">♛</span>
+        <div class="mg-status-card-name">Княгиня</div>
+        <p class="mg-status-card-desc">Лидер, принимающий решения. Женщина, умеющая управлять процессами и нести ответственность.</p>
+      </div>
+      <div class="mg-status-card">
+        <span class="mg-status-card-icon">◈</span>
+        <div class="mg-status-card-name">Хранительница</div>
+        <p class="mg-status-card-desc">Носитель мудрости и опыта. Связь с традициями рода, способность сохранять, анализировать и передавать опыт.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -591,14 +629,14 @@
     <p class="mg-label">Участие</p>
     <h2 class="mg-title mg-title--light">Условия<br><em>участия</em></h2>
     <div class="mg-divider"></div>
-    <p style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:16px;color:rgba(255,255,255,0.6);line-height:1.8;">
+    <p style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:16px;color:rgba(220,200,160,0.65);line-height:1.8;">
       Выбери дистанцию, на которой готова работать.
     </p>
     <div class="mg-tariffs-grid">
       <div class="mg-tariff">
         <div class="mg-tariff-name">Внешний круг</div>
         <div class="mg-tariff-price">14 700 ₽</div>
-        <div class="mg-tariff-early">при оплате до 16 марта —<br><strong style="color:#C87941;">13 300 ₽</strong></div>
+        <div class="mg-tariff-early">при оплате до 16 марта —<br><strong style="color:#D4A855;">13 300 ₽</strong></div>
         <ul class="mg-tariff-features">
           <li>Доступ к основным вебинарам первой и второй недели в режиме слушателя</li>
           <li>Записи всех эфиров</li>
@@ -609,7 +647,7 @@
         <div class="mg-tariff-badge">Популярный выбор</div>
         <div class="mg-tariff-name">Внутренний круг</div>
         <div class="mg-tariff-price">21 100 ₽</div>
-        <div class="mg-tariff-early">при оплате до 16 марта —<br><strong style="color:#C87941;">18 800 ₽</strong></div>
+        <div class="mg-tariff-early">при оплате до 16 марта —<br><strong>18 800 ₽</strong></div>
         <ul class="mg-tariff-features">
           <li>Включённая работа с обратной связью</li>
           <li>Участие в онлайн-встречах</li>
@@ -621,7 +659,7 @@
       <div class="mg-tariff">
         <div class="mg-tariff-name">Приватный круг</div>
         <div class="mg-tariff-price">33 300 ₽</div>
-        <div class="mg-tariff-early">при оплате до 16 марта —<br><strong style="color:#C87941;">30 300 ₽</strong></div>
+        <div class="mg-tariff-early">при оплате до 16 марта —<br><strong style="color:#D4A855;">30 300 ₽</strong></div>
         <ul class="mg-tariff-features">
           <li>Максимальная плотность работы и индивидуальный разбор</li>
           <li>Всё наполнение Внутреннего круга</li>
@@ -639,6 +677,7 @@
 <!-- ===== БЛОК 7: ФИНАЛ ===== -->
 <section class="mg-finale">
   <div class="mg-finale-content">
+    <div class="mg-finale-title">Вместо финала</div>
     <p>
       Отказ принимать условия своего пути ведёт к исключению из дальнейшего взаимодействия с миром. Вы можете оставаться в привычном дефиците — или зайти в свой <em>тёмный лес</em> за реальной силой.
     </p>
@@ -647,3 +686,96 @@
 </section>
 
 </div>
+
+<!-- ===== АНИМАЦИЯ СВЕТЛЯЧКОВ ===== -->
+<script>
+(function() {
+  var canvas = document.getElementById('mg-fireflies');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+
+  var CONFIG = {
+    count: 55,
+    colors: [
+      [180, 255, 80],
+      [220, 255, 100],
+      [255, 235, 90],
+      [200, 255, 160],
+      [255, 195, 80]
+    ]
+  };
+
+  function resize() {
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  function rand(a, b) { return Math.random() * (b - a) + a; }
+
+  function Fly() { this.reset(true); }
+  Fly.prototype.reset = function(initial) {
+    this.x       = rand(0, canvas.width);
+    this.y       = initial ? rand(0, canvas.height) : rand(0, canvas.height);
+    this.angle   = rand(0, Math.PI * 2);
+    this.speed   = rand(0.15, 0.45);
+    this.size    = rand(1.0, 2.8);
+    this.life    = 0;
+    this.maxLife = rand(130, 280);
+    this.turn    = rand(-0.022, 0.022);
+    this.wobble  = rand(0, Math.PI * 2);
+    this.wSpeed  = rand(0.02, 0.055);
+    this.rgb     = CONFIG.colors[Math.floor(Math.random() * CONFIG.colors.length)];
+  };
+  Fly.prototype.update = function() {
+    this.life++;
+    this.wobble += this.wSpeed;
+    this.angle  += this.turn + Math.sin(this.wobble) * 0.012;
+    this.x += Math.cos(this.angle) * this.speed;
+    this.y += Math.sin(this.angle) * this.speed;
+    var half = this.maxLife / 2;
+    this.alpha = this.life < half
+      ? this.life / half
+      : 1 - (this.life - half) / half;
+    this.alpha = Math.max(0, Math.min(1, this.alpha));
+    if (this.life >= this.maxLife) this.reset(false);
+    if (this.x < 0) this.x = canvas.width;
+    if (this.x > canvas.width) this.x = 0;
+    if (this.y < 0) this.y = canvas.height;
+    if (this.y > canvas.height) this.y = 0;
+  };
+  Fly.prototype.draw = function() {
+    var r = this.rgb[0], g = this.rgb[1], b = this.rgb[2];
+    var a = this.alpha;
+    ctx.save();
+    ctx.globalAlpha = a;
+    ctx.shadowBlur  = 16;
+    ctx.shadowColor = 'rgba(' + r + ',' + g + ',' + b + ',' + a + ')';
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgb(' + r + ',' + g + ',' + b + ')';
+    ctx.fill();
+    ctx.globalAlpha = a * 0.25;
+    ctx.shadowBlur  = 0;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size * 3.5, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(' + r + ',' + g + ',' + b + ',0.12)';
+    ctx.fill();
+    ctx.restore();
+  };
+
+  var flies = [];
+  for (var i = 0; i < CONFIG.count; i++) flies.push(new Fly());
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (var i = 0; i < flies.length; i++) {
+      flies[i].update();
+      flies[i].draw();
+    }
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+</script>
